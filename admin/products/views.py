@@ -13,6 +13,7 @@ class ProductViewSet(viewsets.ViewSet):
 	def list(self, request):
 		products = Product.objects.all()
 		serializer = ProductSerializer(products, many=True)
+		rmqpublish()
 		return Response(serializer.data)
 
 	def create(self, request):
@@ -24,7 +25,6 @@ class ProductViewSet(viewsets.ViewSet):
 
 	def retrieve(self, request, pk=None):
 		product = Product.objects.get(id=pk)
-		rmqpublish()
 		serializer = ProductSerializer(product)
 		return Response(serializer.data)
 
