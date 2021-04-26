@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     command: 'python main.py'
     ports:
-      - 8001:8000 # 8001 to differentiate from django app's 8000
+      - 8001:5000 # 8001 to differentiate from django app's 8000
     volumes:
       - .:/app
     depends_on:
